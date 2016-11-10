@@ -425,6 +425,7 @@ WARNING
       if load_default_cache?
         puts "New app detected loading default bundler cache"
         patchlevel = run("ruby -e 'puts RUBY_PATCHLEVEL'").chomp
+        patchlevel = 353 # CH - hardcoded this as it kept picking up 481 from somewhere and heroku didn't have that
         cache_name  = "#{DEFAULT_RUBY_VERSION}-p#{patchlevel}-default-cache"
         @fetchers[:buildpack].fetch_untar("#{cache_name}.tgz")
       end
